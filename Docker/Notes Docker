@@ -3,3 +3,18 @@ Container:
 * portable artifact, easily shared and moved around (Tipo um container de porto mesmo).
 * Makes development and deployment more efficient.
 
+Container port vs HOST port:
+ - Multiple contianers can run on your host machine
+ - Your laptop has only certain porst available
+
+YOU CA HAVE 2 CONTAINERS ON ONE PORT, AS LONG AS YOU BIND THEM TO DIFFERENT PORTS OF YOUR MACHINE:
+
+CONTAINER 1 : PORT 3000 -------> CONNECTED TO UR MACHINE PORT 3000
+CONTAINER 2 : PORT 3000 -------> CONNECTED TO MACHINE PORT 3001
+
+AFTER THAT YOU CAN CONNECT TO CONTAINER BY USING THE MACHINE PORT.
+
+some-app://localhost:3001
+
+
+
