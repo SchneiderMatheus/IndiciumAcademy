@@ -17,4 +17,18 @@ AFTER THAT YOU CAN CONNECT TO CONTAINER BY USING THE MACHINE PORT.
 some-app://localhost:3001
 
 
+docker pull = download image
+docker run = runs it
+docker -d = runs container without ocuppying the terminal
+docker -p3000:6879 = delegate a host port to containers port
+docker ps-a = all containers that existed on the machine
+docker ps = all containers runing
+docker images = gives you all images you have locally
+docker logs = to see logs redis is running
+docker run redis:8.6 = using redis version 8.6 specifically
+docker run -d --name redis1 redis = naming redis1 the container
+docker exec -it 'container id or name' /bin/bash =  get the terminal of the running container 
+exit = leave the terminal
+
+
 
