@@ -11,4 +11,39 @@ aparece em um intervalo numa string → int
 ● str.replace(oldvalue, newvalue, count) - substitui um valor por outro na
 quantidade definida numa string → str """
 
+"""Operações com números
+Operações com números são determinadas pelos operadores
+OperatorNameExample Operator Name Example Returns
++ Addition x + y int or float
+- Subtraction x - y int or float
+* Multiplication x * y int or float
+/ Division x / y float (always)
+% Modulus x % y int or float
+** Exponentiation x ** y int or float
+// Floor division x // y int or float """
 
+""" Lists - []
+● Ordenadas, mutáveis e
+permitem duplicatas
+● Itens são indexados
+● Acesso: list[i] ou list[range]
+Métodos:
+● list.append(value)
+● list.count(value)
+● list.index(i)
+● list.insert(i, elmnt)
+● list[i] = new_value
+● list.pop(i)
+● list.remove(elmnt)
+● list.sort()
+● lent(list) """
+
+""" Dicts - {k: v}
+● Guardam dados em {chave:
+valor}
+● Ordenados, mutáveis e não
+permitem duplicatas
+● Acesso: dict[key] ou
+dict.get(key)
+Métodos:
+● dict.pop(keyname) """
