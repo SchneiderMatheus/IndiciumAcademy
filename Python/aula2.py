@@ -63,3 +63,16 @@ Membership operators
 in             Returns True if sequence is present in object           x in y
 not in         Returns True if sequence is NOT present                 x not in y
  """
+
+olar = 'olá amigo, como voce é legal'
+print(str.capitalize(olar))
+print(str.upper(olar))
+
+if olar == 'olá amigo, como voce é legal':
+    print('Wow! você é INCRÍVEL')
+else:
+    print('Quase lá, amigão')
+
+x,y= 5,2
+potencia = x**y
+print(potencia)
