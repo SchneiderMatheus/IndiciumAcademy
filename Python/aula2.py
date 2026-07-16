@@ -81,6 +81,7 @@ list = [10,20,30,40]
 list.append(50)
 x=list.count(20)
 print(f'Contador: {x}')
-list.index(20)
+index1 = list.index(30)
+print(f'Index: {index1}')
 list.insert(0,0)
 print(list)
