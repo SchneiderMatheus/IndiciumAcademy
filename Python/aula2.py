@@ -47,3 +47,19 @@ permitem duplicatas
 dict.get(key)
 Métodos:
 ● dict.pop(keyname) """
+
+""" LOGICAL OPERATORS
+and            Returns True if both statements are true                x < 5 and x < 10
+or             Returns True if one of the statements is true           x < 5 or x < 4
+not            Reverse the result, returns False if true               not(x < 5 and x < 10)
+
+Identity operators
+
+is             Returns True if both variables are same object          x is y
+is not         Returns True if both variables are NOT same object      x is not y
+
+Membership operators
+
+in             Returns True if sequence is present in object           x in y
+not in         Returns True if sequence is NOT present                 x not in y
+ """
