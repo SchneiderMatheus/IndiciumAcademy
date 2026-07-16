@@ -76,3 +76,11 @@ else:
 x,y= 5,2
 potencia = x**y
 print(potencia)
+
+list = [10,20,30,40]
+list.append(50)
+x=list.count(20)
+print(f'Contador: {x}')
+list.index(20)
+list.insert(0,0)
+print(list)
