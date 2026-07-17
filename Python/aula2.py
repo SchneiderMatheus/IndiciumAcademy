@@ -85,3 +85,26 @@ index1 = list.index(30)
 print(f'Index: {index1}')
 list.insert(0,0)
 print(list)
+
+metricas = {"precisao":0.85, "recall": 0.80}
+
+
+for key, value in metricas.items(): 
+    print(key, value)
+
+def media(nota1,nota2):
+    return (nota1 + nota2)/2
+
+print(media(8,9))
+
+
+dados_dic = {"nome": "Ana", "idade": 29, "ativo":True} ,{"nome": "Malu", "idade": 23, "ativo":False}
+## para dics:
+for key, value, in dados_dic():
+    print(key,value)
+
+
+list = ["apple","banana","cherry"]
+
+for index, value in enumerate(list): # enumerate retorna tbm o index
+    print(index,value)
