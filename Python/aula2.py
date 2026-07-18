@@ -76,6 +76,16 @@ Venvs:
 ● Ambientes virtuais onde podemos instalar os pacotes de uma aplicação, evitando
 instalá-los na nossa máquina.
 
+Ler e inspecionar dados com Pandas
+Dica:
+Antes de manipular os dados, sempre faça uma leitura inicial para entender o
+formato e evitar erros.
+pd.read_csv() → carrega dados tabulares em DataFrame
+head() → mostra as primeiras linhas do conjunto
+shape → tamanho (linhas x colunas)
+columns → nomes das colunas
+info() → tipos de dados e valores ausentes
+
  """
 
 olar = 'olá amigo, como voce é legal'
