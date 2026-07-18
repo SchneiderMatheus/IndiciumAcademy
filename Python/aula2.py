@@ -111,10 +111,6 @@ def media(nota1,nota2):
 
 print(media(8,9))
 
-
-
-
-
 list = ["apple","banana","cherry"]
 
 for index, value in enumerate(list): # enumerate retorna tbm o index
