@@ -62,6 +62,20 @@ Membership operators
 
 in             Returns True if sequence is present in object           x in y
 not in         Returns True if sequence is NOT present                 x not in y
+
+FUNÇOES
+Módulos:
+● Arquivos que contêm funções para incluir em nossas aplicações. *.py
+Pacotes:
+● Diretórios que contêm múltiplos módulos ou subpacotes.
+○ Extensive Standard Library
+■ Ex.: math, os, json, pandas, numpy, requests
+○ Externos:
+■ Ex.: pandas, numpy, requests
+Venvs:
+● Ambientes virtuais onde podemos instalar os pacotes de uma aplicação, evitando
+instalá-los na nossa máquina.
+
  """
 
 olar = 'olá amigo, como voce é legal'
@@ -98,10 +112,7 @@ def media(nota1,nota2):
 print(media(8,9))
 
 
-dados_dic = {"nome": "Ana", "idade": 29, "ativo":True} ,{"nome": "Malu", "idade": 23, "ativo":False}
-## para dics:
-for key, value, in dados_dic():
-    print(key,value)
+
 
 
 list = ["apple","banana","cherry"]
