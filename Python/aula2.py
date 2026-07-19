@@ -136,4 +136,9 @@ dados ={ 'Nome':['João', 'Maria', 'Pedro','Ana','Lucas'],
 df = pd.DataFrame(dados)
 print("\n --- Dados ---")
 print(dados)
+print('\n')
 print (df)
+print('\n')
+print(df.head(2)) # mostra o começo a tabela
+print('\n')
+print(df.tail(2)) # mostra o final
