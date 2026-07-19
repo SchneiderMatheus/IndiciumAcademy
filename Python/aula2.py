@@ -87,7 +87,7 @@ columns → nomes das colunas
 info() → tipos de dados e valores ausentes
 
  """
-
+import pandas as pd
 olar = 'olá amigo, como voce é legal'
 print(str.capitalize(olar))
 print(str.upper(olar))
@@ -125,3 +125,15 @@ list = ["apple","banana","cherry"]
 
 for index, value in enumerate(list): # enumerate retorna tbm o index
     print(index,value)
+
+print("Pula Linha \n") 
+
+dados ={ 'Nome':['João', 'Maria', 'Pedro','Ana','Lucas'], 
+            'Idade': [28,22,35,19,42],
+            'Departamento': ['TI', 'RH', 'TI', 'Financeiro', 'Vendas']
+    }
+
+df = pd.DataFrame(dados)
+print("\n --- Dados ---")
+print(dados)
+print (df)
