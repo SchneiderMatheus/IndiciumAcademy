@@ -142,3 +142,9 @@ print('\n')
 print(df.head(2)) # mostra o começo a tabela
 print('\n')
 print(df.tail(2)) # mostra o final
+
+df2 = pd.read_csv("test.csv") ## ler um arquivo csv
+print(df2)
+
+df2.info() ## informaçoes do DataFrame
+## df.describe() descrever
