@@ -75,7 +75,7 @@ HANDS ON
 ● git clone [url] → Clonar um repositório Git existente para o seu diretório local.
 ● git branch→ Lista todas as branches do repositório.
     ○ git branch [nome] → Cria uma branch com esse nome no repositório.
-    ○ git branch D [nome] → Apaga uma branch com esse nome
+    ○ git branch -D [nome] → Apaga uma branch com esse nome
     ○ git branch -m [nome] → Renomeia a branch com esse nome no repositório
 ● git checkout [branch] → Muda para a branch especificada.
     ○ git checkout -b [branch] → Cria e muda para uma branch especificada.
