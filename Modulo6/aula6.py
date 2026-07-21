@@ -106,4 +106,5 @@ Arquivo .gitignore
 Por que usar?
 ● Segurança: Evita subir senhas, chaves de API e arquivos de configuração local (.env).
 ● Limpeza: Não polui o repositório com arquivos desnecessários (ex: pastas de bibliotecas como venv/ ou n
+ 
  """
