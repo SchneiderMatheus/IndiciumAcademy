@@ -30,4 +30,29 @@ HANDS ON
 Temos muitos outros comandos para uso, como chmod (modificar permissões), chown (alterar proprietário ou grupo).
 
 
+
+Conceito de Versão por Git
+Branches
+Branch significa “ramoˮ, ou seja, uma ramificação do seu código.
+Imagine a seguinte situação: você tem o seu código que já está funcionando em
+produção e precisa desenvolver uma nova funcionalidade (“featureˮ). Mas você não
+pode mexer direto no código em produção.
+Para isso, você cria uma ramificação do seu código, uma branch, em que você pega
+o estado atual daquele código e cria um novo ambiente para desenvolver a nova
+feature a partir dali. Dessa forma, você não altera a versão principal do seu código,
+consegue desenvolver sua funcionalidade com segurança.
+
+Conceito de Versão por Git
+Commits
+Um commit é um conjunto de alterações que você fez em um projeto. Ele marca uma
+versão do seu código. Um commit guarda as alterações feitas nos arquivos, quem
+fez essas alterações e uma mensagem que resume essa alteração.
+Além disso, cada commit tem um hash único que pode ser usado para acompanhar
+todas as alterações feitas no passado e inclusive pode ser usado para voltar em
+alguma alteração específica ou em algum ponto no tempo específico do seu código.
+Pull Request
+Um pull request é um pedido que se faz ao dono do repositório para que este
+atualize o código dele com o seu código. Ou seja, você pede para que o dono do
+projeto ao qual você quer contribuir adicione suas modificações ao projeto oficial.
+
  """
