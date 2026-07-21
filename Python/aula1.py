@@ -10,3 +10,8 @@ lista =[10,20,30,40]
 resultado_soma = soma(lista)
 
 print(resultado_soma)
+
+def media(y):
+    return resultado_soma/4
+
+print(media(list))
