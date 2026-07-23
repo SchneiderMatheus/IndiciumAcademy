@@ -15,3 +15,6 @@ def media(y):
     return resultado_soma/4
 
 print(media(list))
+
+g = media(list) * resultado_soma
+print(g)
