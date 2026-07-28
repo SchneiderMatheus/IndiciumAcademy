@@ -22,4 +22,18 @@ aumenta conforme o time avança.
 Tempo e Custo), onde a alteração de um eixo impacta
 diretamente nos outros.
 
+PILARES:
+
+ESTRATÉGIA
+DE CLIENTE &
+RESULTADOS
+
+GESTÃO ÁGIL:
+ORGANIZAÇÃO
+& CONTROLE
+
+DESENVOLVIMENTO
+E EVOLUÇÃO
+DA EQUIPE
+
  """
