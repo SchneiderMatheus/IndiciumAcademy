@@ -77,4 +77,17 @@ dos indivíduos e garantindo o sucesso do projeto;
 ● Medir e monitorar o desempenho da equipe, coletando informações de
 outros líderes e oferecendo feedback e orientação;
 ● Contribuir para a coordenação da equipe;
+
+PROJETO
+Objetivo: Responder ao "quê", "porquê" e "para quando" o
+trabalho será realizado
+Linha do tempo: Único, finito e com data de entrega.
+Exemplo em IA Implementar um novo motor de recomendação.
+Risco: Elevado devido à incerteza das hipóteses.
+
+PROCESSO
+Objetivo: Manter a estabilidade e a eficiência.
+Linha do tempo: Cíclico, repetitivo e contínuo.
+Exemplo em IA Monitorar e re-treinar o modelo mensalmente.
+Risco: Baixo, focado na padronização e controle.
  """
