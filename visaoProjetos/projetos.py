@@ -90,4 +90,28 @@ Objetivo: Manter a estabilidade e a eficiência.
 Linha do tempo: Cíclico, repetitivo e contínuo.
 Exemplo em IA Monitorar e re-treinar o modelo mensalmente.
 Risco: Baixo, focado na padronização e controle.
+
+Metodologias ge gestão:
+Diferentes propostas de
+metodologias e ferramentas de
+gestão:
+- Scrum
+- Kanban
+- Cascata
+
+Necessidades da organização:
+Necessidades específicas do
+contexto que você está inserido
+para a gestão dos seus projetos
+e atendimento dos seus
+objetivos
+
+IGUAL
+
+Metodologia híbrida
+União e adaptação de diferentes
+metodologias de gestão para
+atender as demandas dos
+projetos.
+
  """
