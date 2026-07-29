@@ -58,6 +58,27 @@ aperfeiçoamento contínuo."
 ● Experimente sem medo.
 ● Monitore seu progresso.
 
+Juntos, mais fortes
+Colaboração mútua para
+vencer desafios globais em IA.
 
+Assumir a responsabilidade
+Assumir a responsabilidade e
+o protagonismo das entregas.
+
+Entregar valor
+Foco total no impacto real e na
+solução para o cliente.
+
+Qualidade em primeiro lugar
+Padrão de excelência em cada
+linha de código e relatório.
+
+A Jornada de Soft Skills no Lighthouse
+● Objetivo: capacitar os participantes do Lighthouse no desenvolvimento das competências
+comportamentais, visando integrar, aprimorar e fortalecer essas atitudes para prepará-los para o
+mercado de trabalho.
+● Ocorre ao longo dos 6 meses de programa.
+● São oferecidas aulas, vivências de soft skills e team building.
 
 """
