@@ -81,4 +81,23 @@ mercado de trabalho.
 ● Ocorre ao longo dos 6 meses de programa.
 ● São oferecidas aulas, vivências de soft skills e team building.
 
+Dicas de Preparação para Entrevista
+1. Conexão e Estabilidade Técnica
+
+Internet estável
+Dê preferência ao cabo ou certifique-se de
+que o Wi-Fi está estável.
+
+Redes compartilhadas
+Evite redes sobrecarregadas por outros
+usuários no momento.
+
+Energia constante
+Mantenha seu dispositivo conectado à fonte
+de energia.
+
+Plano B disponível
+Tenha dados móveis prontos como alternativa
+imediata.
+
 """
