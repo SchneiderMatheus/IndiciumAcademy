@@ -40,6 +40,24 @@ comportamos e encaramos os
 desafios. Desenvolvido via
 autoconhecimento.
 
+ Importância
+Desafio na formação integral
+O equilíbrio entre traços inatos e competências a
+serem desenvolvidas.
+O gap da Liderança
+Técnicos promovidos que não se adaptam à gestão.
+Por quê?
+"O desenvolvimento da atitude exige tempo e
+aperfeiçoamento contínuo."
+
+
+ Desenvolvimento
+● Adquira conhecimento teórico.
+● Pratique o que aprendeu.
+● Defina objetivos claros.
+● Experimente sem medo.
+● Monitore seu progresso.
+
 
 
 """
