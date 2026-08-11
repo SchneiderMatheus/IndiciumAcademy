@@ -7,10 +7,7 @@ from datetime import datetime
 
 
 def sanitize_identifier(name: str) -> str:
-    """Sanitiza o nome do arquivo ou da coluna para ser um identificador válido no PostgreSQL
-
-    (snake_case, sem caracteres especiais).
-    """
+    """Sanitiza nome de arquivo ou coluna para identificador válido no PostgreSQL."""
     # Remove a extensão se houver
     name = os.path.splitext(name)[0]
     # Substitui caracteres não alfanuméricos por underline
@@ -58,7 +55,7 @@ def infer_type(value: str) -> str:
 
     for fmt in date_formats:
         try:
-            dt = datetime.strptime(val, fmt)
+            datetime.strptime(val, fmt)
             if " " in val or "T" in val:
                 return "TIMESTAMP"
             return "DATE"
@@ -153,34 +150,18 @@ def analyze_csv(filepath: str, max_rows: int = 5000) -> dict:
                     )
             row_count += 1
 
-    # Substitui UNKNOWN remanescentes (colunas sem dados/nulas) por TEXT
+    # Substitui UNKNOWN remanescentes (colunas sem dados/nulas) por VARCHAR(255)
     for col, dtype in column_types.items():
         if dtype == "UNKNOWN":
-            column_types[col] = "TEXT"
+            column_types[col] = "VARCHAR(255)"
 
     return {"table_name": table_name, "columns": column_types}
-
-
-def map_type_to_sqlite(inferred_type: str) -> str:
-    """Converte o tipo inferido para um tipo compatível com SQLite."""
-    type_mapping = {
-        "BOOLEAN": "INTEGER",
-        "INTEGER": "INTEGER",
-        "BIGINT": "INTEGER",
-        "NUMERIC": "REAL",
-        "DATE": "TEXT",
-        "TIMESTAMP": "TEXT",
-        "VARCHAR(255)": "TEXT",
-        "TEXT": "TEXT",
-        "UNKNOWN": "TEXT",
-    }
-    return type_mapping.get(inferred_type, "TEXT")
 
 
 def generate_schema(
     input_dir: str = ".", output_file: str = "schema.sql"
 ) -> None:
-    """Busca todos os arquivos CSV do diretório e escreve a DDL SQLite."""
+    """Busca todos os arquivos CSV do diretório e escreve a DDL PostgreSQL."""
     input_dir = os.path.abspath(input_dir)
     output_file = os.path.abspath(output_file)
     csv_files = glob.glob(os.path.join(input_dir, "*.csv"))
@@ -191,7 +172,7 @@ def generate_schema(
 
     sql_statements = [
         "-- Arquivo gerado automaticamente por script de auto-detecção de schema",
-        "-- Destino: SQLite\n",
+        "-- Destino: PostgreSQL\n",
     ]
 
     for filepath in sorted(csv_files):
@@ -205,8 +186,7 @@ def generate_schema(
         columns_ddl = []
 
         for col_name, col_type in schema_info["columns"].items():
-            sqlite_type = map_type_to_sqlite(col_type)
-            columns_ddl.append(f"    {col_name} {sqlite_type}")
+            columns_ddl.append(f"    {col_name} {col_type}")
 
         ddl = f"CREATE TABLE IF NOT EXISTS {table_name} (\n"
         ddl += ",\n".join(columns_ddl)
