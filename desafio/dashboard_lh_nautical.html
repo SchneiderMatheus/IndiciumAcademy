@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LH Nautical | Dashboard Analítico</title>
+  <style>
+    :root {
+      --bg: #f5f1e8;
+      --panel: #fffaf2;
+      --ink: #1f2a30;
+      --muted: #67757c;
+      --line: #d9cdb8;
+      --sea: #0f5c78;
+      --sea-soft: #d8eef5;
+      --sand: #e2b46d;
+      --sand-soft: #f8e5c6;
+      --alert: #b85a3c;
+      --forest: #2f6f57;
+      --shadow: 0 18px 40px rgba(42, 53, 59, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(15, 92, 120, 0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(226, 180, 109, 0.22), transparent 24%),
+        linear-gradient(180deg, #faf5ec 0%, var(--bg) 100%);
+    }
+
+    .wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 32px 20px 56px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(15, 92, 120, 0.98), rgba(8, 43, 57, 0.96));
+      color: #fff;
+      border-radius: 28px;
+      padding: 28px 28px 24px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -60px -80px auto;
+      width: 240px;
+      height: 240px;
+      background: radial-gradient(circle, rgba(226, 180, 109, 0.45), transparent 62%);
+    }
+
+    .eyebrow {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      opacity: 0.82;
+      margin-bottom: 10px;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: clamp(30px, 5vw, 48px);
+      line-height: 1.05;
+      max-width: 760px;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 14px 0 0;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .meta span {
+      padding: 8px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.88);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .grid.kpis {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid.three {
+      grid-template-columns: 1.25fr 1fr 1fr;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid rgba(217, 205, 184, 0.8);
+      border-radius: 22px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h2 {
+      font-size: 24px;
+      margin-bottom: 14px;
+    }
+
+    .card h3 {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .kpi-label {
+      color: var(--muted);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .kpi-value {
+      font-size: clamp(24px, 3vw, 40px);
+      font-family: Georgia, "Times New Roman", serif;
+      margin-top: 8px;
+    }
+
+    .kpi-foot {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .bars {
+      display: grid;
+      gap: 12px;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 150px 1fr 92px;
+      gap: 12px;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .track {
+      width: 100%;
+      height: 12px;
+      background: #ecdfca;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--sea), #178cb5);
+    }
+
+    .fill.sand {
+      background: linear-gradient(90deg, #c88632, var(--sand));
+    }
+
+    .fill.forest {
+      background: linear-gradient(90deg, var(--forest), #4ca37e);
+    }
+
+    .fill.alert {
+      background: linear-gradient(90deg, #93412a, var(--alert));
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 10px 8px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    th {
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .note {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(216, 238, 245, 0.7), rgba(216, 238, 245, 0.34));
+      color: #24414b;
+      line-height: 1.5;
+      font-size: 14px;
+      border: 1px solid rgba(15, 92, 120, 0.12);
+    }
+
+    .big-callout {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 100%;
+      background:
+        linear-gradient(180deg, rgba(248, 229, 198, 0.72), rgba(255, 250, 242, 0.96));
+    }
+
+    .big-callout .tag {
+      color: var(--alert);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 12px;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .big-callout .headline {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.06;
+      margin-bottom: 12px;
+    }
+
+    .big-callout .sub {
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 15px;
+    }
+
+    .split {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 16px;
+    }
+
+    .pill {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px;
+      min-height: 92px;
+    }
+
+    .pill strong {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 22px;
+      margin-top: 6px;
+    }
+
+    .footer {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 980px) {
+      .grid.kpis,
+      .grid.two,
+      .grid.three,
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .bar-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="eyebrow">Material complementar do desafio</div>
+      <h1>LH Nautical | Dashboard analítico com visão executiva, operação e modelagem</h1>
+      <p>Dashboard construído a partir dos CSVs fornecidos no desafio. A ideia aqui foi resumir os principais achados em um formato que faria sentido em um contexto real: visão geral do negócio, comportamento de vendas, clientes de elite, calendário operacional, baseline de demanda e recomendação de produto.</p>
+      <div class="meta">
+        <span>Base: CSVs brutos</span>
+        <span>Período: 2020-01-01 até 2026-12-31</span>
+        <span>Formato: dashboard HTML</span>
+        <span>Autor: entrega complementar</span>
+      </div>
+    </section>
+
+    <section class="grid kpis">
+      <article class="card">
+        <div class="kpi-label">Faturamento total</div>
+        <div class="kpi-value">R$ 1,41 bi</div>
+        <div class="kpi-foot">Soma da coluna <code>total</code> em 48.998 pedidos</div>
+      </article>
+      <article class="card">
+        <div class="kpi-label">Ticket médio</div>
+        <div class="kpi-value">R$ 28,7 mil</div>
+        <div class="kpi-foot">Média por pedido em toda a base</div>
+      </article>
+      <article class="card">
+        <div class="kpi-label">Clientes compradores</div>
+        <div class="kpi-value">2.000</div>
+        <div class="kpi-foot">Todos os clientes da base registraram compra</div>
+      </article>
+      <article class="card">
+        <div class="kpi-label">Pagamentos</div>
+        <div class="kpi-value">53.546</div>
+        <div class="kpi-foot">Volume maior que pedidos, indicando parcelamento e múltiplos registros</div>
+      </article>
+    </section>
+
+    <section class="grid two">
+      <article class="card">
+        <h2>Mix de canais</h2>
+        <div class="bars">
+          <div class="bar-row">
+            <strong>E-commerce</strong>
+            <div class="track"><div class="fill" style="width: 70.2%"></div></div>
+            <span>R$ 987,2 mi</span>
+          </div>
+          <div class="bar-row">
+            <strong>Lojas físicas</strong>
+            <div class="track"><div class="fill sand" style="width: 29.8%"></div></div>
+            <span>R$ 419,3 mi</span>
+          </div>
+        </div>
+        <div class="note" style="margin-top: 14px;">
+          O e-commerce concentra a maior parte do faturamento. Mesmo assim, a operação física ainda representa uma fatia relevante e merece monitoramento separado, principalmente em análises por dia da semana.
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Status dos pedidos</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Status</th>
+              <th>Pedidos</th>
+              <th>Leitura</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>paid</td><td>34.365</td><td>Base majoritariamente concluída</td></tr>
+            <tr><td>confirmed</td><td>7.335</td><td>Pedidos válidos, mas ainda não pagos</td></tr>
+            <tr><td>cancelled</td><td>4.847</td><td>Ponto de atenção para análises de receita líquida</td></tr>
+            <tr><td>draft</td><td>2.451</td><td>Rascunhos não devem entrar em toda análise de conversão</td></tr>
+          </tbody>
+        </table>
+      </article>
+    </section>
+
+    <section class="grid two">
+      <article class="card">
+        <h2>Categorias com maior faturamento</h2>
+        <div class="bars">
+          <div class="bar-row"><span>Hélices</span><div class="track"><div class="fill forest" style="width: 100%"></div></div><span>R$ 146,2 mi</span></div>
+          <div class="bar-row"><span>Eletrônica Náutica</span><div class="track"><div class="fill forest" style="width: 81.1%"></div></div><span>R$ 118,5 mi</span></div>
+          <div class="bar-row"><span>Pesca</span><div class="track"><div class="fill forest" style="width: 77.2%"></div></div><span>R$ 112,8 mi</span></div>
+          <div class="bar-row"><span>Velas</span><div class="track"><div class="fill forest" style="width: 75.6%"></div></div><span>R$ 110,4 mi</span></div>
+          <div class="bar-row"><span>Coletes Salva-Vidas</span><div class="track"><div class="fill forest" style="width: 74.6%"></div></div><span>R$ 109,1 mi</span></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Produtos com maior volume vendido</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Produto</th>
+              <th>Qtd.</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Âncora Bruce 831</td><td>2.745</td></tr>
+            <tr><td>Motor de Popa 684</td><td>2.744</td></tr>
+            <tr><td>Bússola de Bordo 4621</td><td>2.738</td></tr>
+            <tr><td>Vela Mestra 5825</td><td>2.686</td></tr>
+            <tr><td>Bateria Náutica 1945</td><td>2.674</td></tr>
+          </tbody>
+        </table>
+      </article>
+    </section>
+
+    <section class="grid three">
+      <article class="card big-callout">
+        <div class="tag">Questão 4 | Clientes fiéis</div>
+        <div class="headline">Entre os 10 clientes de elite, a categoria com maior volume foi Hélices.</div>
+        <div class="sub">Aplicando o filtro de diversidade de 13 ou mais categorias e depois ordenando pelo maior ticket médio, a categoria que concentrou mais itens comprados nesse grupo foi <strong>Hélices</strong>, com <strong>492 unidades</strong>.</div>
+      </article>
+
+      <article class="card">
+        <h3>Top tickets médios</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Cliente</th>
+              <th>Ticket médio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>22</td><td>R$ 41.839,94</td></tr>
+            <tr><td>1477</td><td>R$ 41.648,30</td></tr>
+            <tr><td>929</td><td>R$ 41.645,23</td></tr>
+            <tr><td>1116</td><td>R$ 40.983,57</td></tr>
+            <tr><td>1691</td><td>R$ 40.773,57</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="card">
+        <h3>Leitura rápida</h3>
+        <div class="note">
+          O comportamento do grupo de elite é útil para expansão de mix e campanhas de cross-sell. Aqui, diversidade de compra e ticket alto caminham juntos, então esse perfil vale mais que cliente de compra isolada muito alta.
+        </div>
+      </article>
+    </section>
+
+    <section class="grid two">
+      <article class="card">
+        <h2>Calendário operacional das lojas físicas</h2>
+        <div class="bars">
+          <div class="bar-row"><span>Quinta-feira</span><div class="track"><div class="fill alert" style="width: 90.5%"></div></div><span>R$ 157,2 mil</span></div>
+          <div class="bar-row"><span>Domingo</span><div class="track"><div class="fill sand" style="width: 90.8%"></div></div><span>R$ 157,6 mil</span></div>
+          <div class="bar-row"><span>Segunda-feira</span><div class="track"><div class="fill" style="width: 91.2%"></div></div><span>R$ 158,2 mil</span></div>
+          <div class="bar-row"><span>Sábado</span><div class="track"><div class="fill" style="width: 94.9%"></div></div><span>R$ 164,9 mil</span></div>
+          <div class="bar-row"><span>Quarta-feira</span><div class="track"><div class="fill forest" style="width: 100%"></div></div><span>R$ 173,6 mil</span></div>
+        </div>
+        <div class="note" style="margin-top: 14px;">
+          Considerando também os dias sem venda como zero, a pior média ficou em <strong>Quinta-feira</strong>. Isso corrige o problema de inflar a média ao ignorar dias em que a loja abriu, mas não vendeu nada.
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Receita mensal de 2026</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Mês</th>
+              <th>Faturamento</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Jan</td><td>R$ 39,1 mi</td></tr>
+            <tr><td>Fev</td><td>R$ 31,5 mi</td></tr>
+            <tr><td>Mar</td><td>R$ 33,0 mi</td></tr>
+            <tr><td>Abr</td><td>R$ 24,1 mi</td></tr>
+            <tr><td>Mai</td><td>R$ 17,0 mi</td></tr>
+            <tr><td>Jun</td><td>R$ 11,6 mi</td></tr>
+            <tr><td>Jul</td><td>R$ 10,3 mi</td></tr>
+            <tr><td>Dez</td><td>R$ 39,0 mi</td></tr>
+          </tbody>
+        </table>
+      </article>
+    </section>
+
+    <section class="grid two">
+      <article class="card">
+        <h2>Baseline de demanda | Bússola de Bordo 702</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Mês</th>
+              <th>Real</th>
+              <th>Previsto</th>
+              <th>Erro abs.</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>2026-01</td><td>69</td><td>25,33</td><td>43,67</td></tr>
+            <tr><td>2026-02</td><td>42</td><td>39,67</td><td>2,33</td></tr>
+            <tr><td>2026-03</td><td>45</td><td>41,67</td><td>3,33</td></tr>
+          </tbody>
+        </table>
+        <div class="split">
+          <div class="pill">
+            MAE
+            <strong>16,44</strong>
+          </div>
+          <div class="pill">
+            Soma prevista no tri
+            <strong>107</strong>
+          </div>
+          <div class="pill">
+            Leitura
+            <strong>Baseline útil, mas simples</strong>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Recomendação de produto</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Produto similar ao Motor de Popa 1949</th>
+              <th>Similaridade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Motor de Popa 5331</td><td>0,256553</td></tr>
+            <tr><td>Cabo Náutico 2105</td><td>0,256239</td></tr>
+            <tr><td>Vela Mestra 1913</td><td>0,255785</td></tr>
+            <tr><td>Cabo Náutico 9048</td><td>0,239332</td></tr>
+            <tr><td>GPS Plotter 6249</td><td>0,237744</td></tr>
+          </tbody>
+        </table>
+        <div class="note" style="margin-top: 14px;">
+          O produto com maior similaridade foi <strong>Motor de Popa 5331</strong>. A lógica foi baseada em presença ou ausência de compra por cliente e similaridade de cosseno entre produtos.
+        </div>
+      </article>
+    </section>
+
+    <section class="card" style="margin-top: 20px;">
+      <h2>Fechamento</h2>
+      <div class="note">
+        A base permitiu construir um fluxo completo: geração de schema, carga dos CSVs, análises SQL, baseline de previsão e recomendação. Os principais pontos de negócio que ficaram mais claros foram: concentração forte no e-commerce, importância de olhar dias sem venda nas lojas físicas, valor analítico do grupo de clientes com alta diversidade de categorias e potencial de recomendação baseada em co-compra.
+      </div>
+      <div class="footer">Arquivo complementar em HTML para ser usado como dashboard de apoio na entrega.</div>
+    </section>
+  </div>
+</body>
+</html>
