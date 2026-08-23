@@ -7,7 +7,7 @@ class User:
         status = "Adulto" if self.age >= 18 else "menor"
         print(f"Usuário: {self.name} | Idade: {self.age} | Status: {status}")
 
-user1 = User("Duarte Junior",27)
+user1 = User("Duarte Junior",32)
 user2 = User("Matheus Schneider",29)
 
 print("\n---Sistema de Usuários ---")
