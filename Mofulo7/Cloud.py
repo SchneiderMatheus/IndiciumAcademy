@@ -9,7 +9,7 @@ interação do provedor de serviço. Esse modelo de nuvem é composto por
 cinco características essenciais, três modelos de serviço e quatro modelos
 de implantação.
 
-
+try 1
 Cloud é computação como utilidade
 Você não compra a usina: você paga pela energia. Em cloud, você paga por
 compute/storage/rede conforme usa.
